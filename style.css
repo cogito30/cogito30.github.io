@@ -19,6 +19,7 @@ main {
 main > img {
     height: 10%;
     display: block;
+    padding-top: 24px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 50%;
@@ -26,7 +27,7 @@ main > img {
 
 
 main > h1 {
-    padding-top: 48px;
+    /* padding-top: 48px; */
     padding-left: 32px;
     padding-right: 32px;
     padding-bottom: 24px;
@@ -47,8 +48,16 @@ main > div > p {
     border: 1px solid black;
     border-radius: 10px;
     text-align: center;
+    &:hover {
+        background-color: gray;
+    }
+
 }
 
 main > div > p > a {
     text-decoration: none;
+    color: black;
+    &:hover {
+        color: white;
+    }
 }
