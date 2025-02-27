@@ -1,0 +1,54 @@
+main {
+    width: 512px;
+    height: 768px;
+
+    position: relative;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.04);
+
+    margin: 0 auto;
+    margin-top: 96px;
+    margin-bottom: 32px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+main > img {
+    height: 10%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+}
+
+
+main > h1 {
+    padding-top: 48px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e9ecef;
+    text-align: center;
+}
+
+main > div.list {
+    flex: 1;
+    padding: 20px 32px;
+    padding-bottom: 48px;
+    overflow-y: auto;
+    /* background: gray; */
+}
+
+main > div > p {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+}
+
+main > div > p > a {
+    text-decoration: none;
+}
