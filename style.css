@@ -48,16 +48,18 @@ main > div > p {
     border: 1px solid black;
     border-radius: 10px;
     text-align: center;
-    &:hover {
-        background-color: gray;
-    }
+}
 
+main > div > p:hover {
+    background-color: gray;
 }
 
 main > div > p > a {
     text-decoration: none;
     color: black;
-    &:hover {
-        color: white;
-    }
+    
+}
+
+main > div > p > a:hover {
+    color: white;
 }
