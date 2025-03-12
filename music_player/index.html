@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</head>
+<body>
+
+    <div class="wrap">
+        <h1>UI/UX <span>PORTFOLIO</span></h1>
+
+        <ul class="auto">
+            <li class="btnStart">></li>
+            <li class="btnStop">||</li>
+        </ul>
+
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="inner">
+                    <div class="con">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/3Us2PXL8xtc?si=oEB2720UouuwflvO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <h2>Cannon</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum velit laborum, reprehenderit itaque cupiditate iste voluptates, at consectetur amet beatae suscipit labore, blanditiis alias voluptate mollitia perspiciatis unde. Nam, quas.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="inner">
+                    <div class="con">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/i55RFwQSwA0?si=nhlL8TNhSY_9xAGx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <h2>Cannon</h2>
+                        <p>content</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="inner">
+                    <div class="con">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/FE35Ndz8RsE?si=EatpiF6ZWq6vw4o1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <h2>만찬가</h2>
+                        <p>content</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="inner">
+                    <div class="con">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Zbo7UY8dxh8?si=C2pMUMukjGLp1VRP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <h2>Not a Dream</h2>
+                        <p>content</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="inner">
+                    <div class="con">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/n8PTT3YTRGA?si=gCOTLzs6j9MDRND6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <h2>봄날</h2>
+                        <p>content</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <script>
+        var swiper = new Swiper(".wrap", {
+            pagination: {
+                el: ".swiper-pagination",
+                type: "fraction",
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            slidesPerView: "auto",
+            spaceBetween: 50,
+            loop: true,
+            centeredSlides: true,
+            speed: 1000,
+            direction: "horizontal",
+            effect: "coverflow",    // 3D 느낌의 효과
+            coverflowEffect: {
+                rotate: 50,
+                stretch: -100,      // +는 당겨오는것, -는 멀어지는 것
+                depth: 400,         // 원근감 처리
+                modifier: 1,         // 효과를 배수로 입력
+                slideShadows: false
+            }
+        });
+    </script>
+</body>
+</html>
