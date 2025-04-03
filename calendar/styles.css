@@ -1,0 +1,85 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-color: #282c36;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+header h2 {
+    color: white;
+    font-size: 40px;
+}
+header h2 a {
+    text-decoration: none;
+    color: white;
+}
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#calendar-info {
+    border: 1px solid white;
+    text-align: center;
+}
+#current-info h2 {
+    text-align: center;
+    font-size: 40px;
+}
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    max-width: 350px;
+    margin: 20px auto;
+}
+.day {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    color: white;
+}
+.header {
+    font-weight: bold;
+    background: #f0f0f0;
+    color: black;
+}
+.saturday {
+    color: blue;
+}
+.sunday {
+    color: red;
+}
+.today {
+    background-color: lightblue;
+}
+#current-info {
+    
+}
+#selector-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+#date {
+    box-sizing: border-box;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+#clock {
+    box-sizing: border-box;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 60px;
+    font-weight: bold;
+}

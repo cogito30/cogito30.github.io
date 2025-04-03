@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calendar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h2><a href="../index.html">Cogito30</a></h2>
+    </header>
+    <main>
+        <div id="calendar-info">
+            <h2>Calendar</h2>
+            <h2 id="month-year"></h2>
+            <button id="prev-month" onclick="changeMonth(-1)">Prev</button>
+            <button id="today">Today</button>
+            <button id="next-month" onclick="changeMonth(1)">Next</button>
+            <div id="calendar"></div>
+        </div>
+        <br />
+        <div id="current-info">
+            <h2>Clock</h2>
+            <div id="selector-container">
+                <select id="locale-selector">
+                    <option value="ko-KR">한국어 (Korean)</option>
+                    <option value="en-US">English (US)</option>
+                    <option value="ja-JP">日本語 (Japanese)</option>
+                    <option value="fr-FR">Français (French)</option>
+                    <option value="de-DE">Deutsch (German)</option>
+                    <option value="es-ES">Español (Spanish)</option>
+                    <option value="zh-CN">中文 (Chinese Simplified)</option>
+                </select>
+                <select id="timezone-selector">
+                    <option value="Asia/Seoul">Seoul (KST)</option>
+                    <option value="America/New_York">New York (EST)</option>
+                    <option value="Europe/London">London (GMT)</option>
+                    <option value="Asia/Tokyo">Tokyo (JST)</option>
+                    <option value="Australia/Sydney">Sydney (AEST)</option>
+                </select>
+            </div>
+            <div id="date"></div>
+            <div id="clock"></div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
