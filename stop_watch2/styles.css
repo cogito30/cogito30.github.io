@@ -65,6 +65,22 @@ body {
     font-size: 1rem;
 }
 
+/* 전체보기 버튼 */
+.fullscreen-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 8px 16px;
+    background-color: #111;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
 /* 태블릿 (768px 이상) */
 @media (min-width: 768px) {
     .stopwatch {

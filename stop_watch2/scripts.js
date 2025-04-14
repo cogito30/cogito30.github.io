@@ -76,3 +76,16 @@ startBtn.addEventListener('click', start);
 pauseBtn.addEventListener('click', pause);
 resetBtn.addEventListener('click', reset);
 lapBtn.addEventListener('click', lap);
+
+/* 전체화면 모드 */
+const fullscreenBtn = document.getElementById('fullscreen-btn');
+
+fullscreenBtn.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch((err) => {
+            alert(`전체화면 전환 실패: ${err.message}`);
+        });
+    } else {
+        document.exitFullscreen();
+    }
+});
