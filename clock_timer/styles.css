@@ -1,0 +1,245 @@
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #000;
+    color: #00ff88;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.clock-container {
+    text-align: center;
+}
+
+.day,
+.date,
+.time,
+.zone {
+    text-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88;
+}
+
+.day {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+    color: #33ffcc;
+}
+
+.date {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #33ffcc;
+}
+
+.time {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    color: #00ff88;
+}
+
+.zone {
+    font-size: 1rem;
+    color: #66ffcc;
+}
+
+.blink {
+    animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* 다크모드 버튼 */
+.toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 8px 16px;
+    background-color: #111;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+body.light-mode {
+    background-color: #f5f5f5;
+    color: #111;
+}
+
+body.light-mode .clock-container .day,
+body.light-mode .clock-container .date,
+body.light-mode .clock-container .time,
+body.light-mode .clock-container .zone {
+    text-shadow: none;
+    color: #222;
+}
+
+/* 전체보기 버튼 */
+.fullscreen-btn {
+    position: fixed;
+    top: 20px;
+    right: 150px;
+    padding: 8px 16px;
+    background-color: #111;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+body.light-mode .fullscreen-btn {
+    background-color: #e0e0e0;
+    color: #000;
+}
+
+/* 시간대 선택 버튼 */
+.timezone-select {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid #666;
+    background: #000;
+    color: #fff;
+    font-size: 0.9rem;
+}
+body.light-mode .timezone-select {
+    background: #fff;
+    color: #000;
+}
+
+/* 타이머모드 버튼 */
+.mode-switch {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+}
+
+#mode-toggle {
+    padding: 8px 16px;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.timer-container {
+    text-align: center;
+    color: #ff3b3b;
+}
+
+.time-inputs input {
+    width: 60px;
+    font-size: 1.2rem;
+    margin: 0 5px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+    background-color: #111;
+    color: #fff;
+}
+
+.timer-display {
+    font-size: 3rem;
+    margin: 20px 0;
+}
+
+.timer-controls button {
+    margin: 0 10px;
+    padding: 8px 16px;
+    font-size: 1rem;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    background-color: #444;
+    color: white;
+}
+
+/* 뽀모도로 모드 버튼 */
+#pomodoro-toggle {
+    margin-left: 10px;
+    padding: 8px 16px;
+    background-color: #bb0000;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+
+/* 타이머 프리셋  버튼 */
+.preset-buttons {
+    margin-top: 10px;
+}
+
+.preset {
+    margin: 4px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: none;
+    background-color: #b75555;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.4);
+}
+
+.preset:hover {
+    background-color: #ff5e5e;
+}
+
+/* 태블릿 대응 */
+@media (min-width: 768px) {
+    .time {
+        font-size: 5rem;
+    }
+
+    .date {
+        font-size: 2rem;
+    }
+
+    .day {
+        font-size: 1.5rem;
+    }
+
+    .zone {
+        font-size: 1.2rem;
+    }
+}
+
+/* 데스크탑 대응 */
+@media (min-width: 1024px) {
+    .time {
+        font-size: 6rem;
+    }
+
+    .date {
+        font-size: 2.2rem;
+    }
+
+    .day {
+        font-size: 1.8rem;
+    }
+
+    .zone {
+        font-size: 1.3rem;
+    }
+}
