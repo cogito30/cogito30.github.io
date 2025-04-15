@@ -1,0 +1,95 @@
+/* 기본 세팅 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #f4f6f8;
+    color: #1f1f1f;
+    line-height: 1.6;
+}
+
+.resume {
+    max-width: 600px;
+    margin: 24px auto;
+    background-color: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* 헤더 스타일 */
+.resume-header {
+    text-align: center;
+    background-color: rgb(16, 18, 57);
+    color: white;
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+}
+
+.profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 12px;
+    border: 3px solid white;
+}
+
+.job-title {
+    font-size: 1.1rem;
+    margin-top: 4px;
+}
+
+.contact {
+    font-size: 0.9rem;
+    margin-top: 8px;
+    color: #ddd;
+}
+
+/* 섹션 스타일 */
+.section {
+    margin-bottom: 24px;
+}
+
+.section h2 {
+    font-size: 1.1rem;
+    border-bottom: 2px solid #001f3f;
+    color: #001f3f;
+    padding-bottom: 4px;
+    margin-bottom: 12px;
+}
+
+.section ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+.section li {
+    margin-bottom: 12px;
+}
+
+/* 펼치기 스타일 */
+.item-title {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #001f3f;
+    cursor: pointer;
+    padding: 6px 0;
+}
+
+.item-title:hover {
+    text-decoration: underline;
+}
+
+.item-detail {
+    display: none;
+    padding-left: 12px;
+    font-size: 0.95rem;
+    color: #333;
+    margin-top: 4px;
+}
