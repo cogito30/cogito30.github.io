@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>거리 측정 앱</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
     <main>
@@ -12,7 +14,9 @@
         <div class="info">
             <p>총 거리: <span id="distance">0.00</span> km</p>
             <p>경과 시간: <span id="time">00:00:00</span></p>
+            <p>평균 속도: <span id="speed">0.00</span> km/h</p>
         </div>
+        <div id="map"></div>
         <div class="controls">
             <button id="start">시작</button>
             <button id="pause">일시정지</button>
