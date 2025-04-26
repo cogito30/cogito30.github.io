@@ -1,28 +1,82 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>거리 측정 앱</title>
-    <link rel="stylesheet" href="style.css"/>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <meta charset="UTF-8">
+    <title>런닝앱 - 거리 측정</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        #map {
+            height: 100vh;
+            width: 100vw;
+        }
+        #distance {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            z-index: 1000;
+            font-size: 1.2rem;
+        }
+    </style>
 </head>
 <body>
-    <main>
-        <h1>거리 측정기</h1>
-        <div class="info">
-            <p>총 거리: <span id="distance">0.00</span> km</p>
-            <p>경과 시간: <span id="time">00:00:00</span></p>
-            <p>평균 속도: <span id="speed">0.00</span> km/h</p>
-        </div>
-        <div id="map"></div>
-        <div class="controls">
-            <button id="start">시작</button>
-            <button id="pause">일시정지</button>
-            <button id="reset">초기화</button>
-        </div>
-    </main>
-    <script src="script.js"></script>
+    <div id="distance">총 거리: 0 m</div>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map').setView([37.5665, 126.9780], 15); // 초기 서울 위치
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        let path = [];
+        let totalDistance = 0;
+        let polyline = L.polyline([], { color: 'red' }).addTo(map);
+
+        function getDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371000; // m
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                      Math.sin(dLon/2) * Math.sin(dLon/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            return R * c;
+        }
+
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition((pos) => {
+                const lat = pos.coords.latitude;
+                const lng = pos.coords.longitude;
+                const newPoint = [lat, lng];
+                path.push(newPoint);
+
+                if (path.length >= 2) {
+                    const prev = path[path.length - 2];
+                    totalDistance += getDistance(prev[0], prev[1], lat, lng);
+                    document.getElementById('distance').innerText = `총 거리: ${totalDistance.toFixed(1)} m`;
+                }
+
+                polyline.setLatLngs(path);
+                map.setView(newPoint);
+                L.circleMarker(newPoint, { radius: 5, color: 'blue' }).addTo(map);
+            }, (err) => {
+                alert('GPS 사용 불가: ' + err.message);
+            }, {
+                enableHighAccuracy: true,
+                maximumAge: 1000
+            });
+        } else {
+            alert('이 브라우저는 위치 정보를 지원하지 않습니다.');
+        }
+    </script>
 </body>
 </html>
