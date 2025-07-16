@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Advanced Music Player</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; text-align: center; }
+    h2 { margin-bottom: 10px; }
+    #currentTrack { font-size: 1.2em; font-weight: bold; margin-bottom: 20px; }
+    button, select { margin: 5px; padding: 6px 12px; }
+    ul { list-style: none; padding: 0; margin-top: 20px; border-top: 1px solid #ccc; }
+    li { cursor: pointer; padding: 8px; border-bottom: 1px solid #eee; }
+    li:hover { background-color: #f0f0f0; }
+    li.active { background-color: #d0f0ff; font-weight: bold; }
+    #playlist {
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+        border-top: 1px solid #ccc;
+        max-height: 600px;
+        overflow-y: auto;
+        text-align: center;
+}
+
+  </style>
+</head>
+<body>
+  <h1>🎵 Advanced Music Player</h1>
+  
+  <input type="file" id="fileInput" accept="audio/*" multiple><br><br>
+
+  <div id="currentTrack">선택된 트랙 없음</div>
+
+  <audio id="audio" controls></audio><br>
+
+  <button id="prevTrack">⏮️ 이전 곡</button>
+  <button id="playPause">▶️ 재생/일시정지</button>
+  <button id="nextTrack">⏭️ 다음 곡</button><br>
+
+  <button id="rewind">⏪ -3초</button>
+  <button id="forward">⏩ +3초</button>
+  <button id="toggleLoop">🔁 반복: Off</button><br>
+
+  <label for="speedControl">🎚️ 재생 속도:</label>
+  <select id="speedControl">
+    <option value="0.5">0.5x</option>
+    <option value="0.75">0.75x</option>
+    <option value="1" selected>1x (기본)</option>
+    <option value="1.25">1.25x</option>
+    <option value="1.5">1.5x</option>
+    <option value="2">2x</option>
+  </select>
+
+  <ul id="playlist"></ul>
+
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const currentTrackEl = document.getElementById('currentTrack');
+    const playlistEl = document.getElementById('playlist');
+    const audio = document.getElementById('audio');
+
+    const playPauseBtn = document.getElementById('playPause');
+    const rewindBtn = document.getElementById('rewind');
+    const forwardBtn = document.getElementById('forward');
+    const toggleLoopBtn = document.getElementById('toggleLoop');
+    const speedControl = document.getElementById('speedControl');
+    const prevTrackBtn = document.getElementById('prevTrack');
+    const nextTrackBtn = document.getElementById('nextTrack');
+
+    let playlist = [];
+    let currentIndex = -1;
+
+    fileInput.addEventListener('change', (e) => {
+      playlist = Array.from(e.target.files);
+      currentIndex = 0;
+      renderPlaylist();
+      if (playlist.length > 0) {
+        playTrack(currentIndex);
+      }
+    });
+
+    function renderPlaylist() {
+      playlistEl.innerHTML = '';
+      playlist.forEach((file, index) => {
+        const li = document.createElement('li');
+        li.textContent = file.name;
+        if (index === currentIndex) li.classList.add('active');
+        li.addEventListener('click', () => {
+          playTrack(index);
+        });
+        playlistEl.appendChild(li);
+      });
+    }
+
+    function playTrack(index) {
+      if (index < 0 || index >= playlist.length) return;
+      currentIndex = index;
+      audio.src = URL.createObjectURL(playlist[currentIndex]);
+      currentTrackEl.textContent = `🎵 재생 중: ${playlist[currentIndex].name}`;
+      audio.play();
+      renderPlaylist();
+    }
+
+    playPauseBtn.addEventListener('click', () => {
+      if (!audio.src) return;
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    });
+
+    rewindBtn.addEventListener('click', () => {
+      audio.currentTime = Math.max(0, audio.currentTime - 3);
+    });
+
+    forwardBtn.addEventListener('click', () => {
+      audio.currentTime = Math.min(audio.duration, audio.currentTime + 3);
+    });
+
+    toggleLoopBtn.addEventListener('click', () => {
+      audio.loop = !audio.loop;
+      toggleLoopBtn.textContent = `🔁 반복: ${audio.loop ? 'On' : 'Off'}`;
+    });
+
+    speedControl.addEventListener('change', () => {
+      audio.playbackRate = parseFloat(speedControl.value);
+    });
+
+    prevTrackBtn.addEventListener('click', () => {
+      if (playlist.length > 0) {
+        playTrack((currentIndex - 1 + playlist.length) % playlist.length);
+      }
+    });
+
+    nextTrackBtn.addEventListener('click', () => {
+      if (playlist.length > 0) {
+        playTrack((currentIndex + 1) % playlist.length);
+      }
+    });
+
+    // 자동 다음곡 재생
+    audio.addEventListener('ended', () => {
+      if (!audio.loop) {
+        nextTrackBtn.click();
+      }
+    });
+
+    // 키보드 단축키
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'Space') {
+        e.preventDefault();
+        playPauseBtn.click();
+      } else if (e.code === 'ArrowLeft') {
+        rewindBtn.click();
+      } else if (e.code === 'ArrowRight') {
+        forwardBtn.click();
+      } else if (e.code === 'KeyL') {
+        toggleLoopBtn.click();
+      } else if (e.code === 'ArrowUp') {
+        prevTrackBtn.click();
+      } else if (e.code === 'ArrowDown') {
+        nextTrackBtn.click();
+      }
+    });
+  </script>
+</body>
+</html>
